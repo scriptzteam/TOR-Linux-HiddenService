@@ -116,7 +116,7 @@ sudo vi /var/www/dark_web/index.html
 
 ***Set the permissions so that Nginx can access the files.***
 ```
-sudo chmod 755 /var/www/dark_web
+sudo chmod 700 /var/www/dark_web
 ```
 
 ***Remove the default site.***
