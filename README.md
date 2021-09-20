@@ -6,6 +6,20 @@ How to host a site on TOR (dark web)
 https://github.com/scriptzteam/TOR-Linux-Build
 ```
 
+***All these steps are for nginx, if you want to run apache2 do NOT forget to disable mod status and edit the security.conf file.***
+```
+a2dismod status
+
+Module status disabled.
+To activate the new configuration, you need to run:
+systemctl restart apache2
+
+nano /etc/apache2/conf-available/security.conf
+|--> ServerTokens Prod 
+|--> ServerSignature Off
+|--> TraceEnable Off
+```
+
 ***The Hidden Service***
 
 ***We need to edit the Tor configuration file to enable our hidden service. First we will make a backup of this configuration file.***
