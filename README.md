@@ -149,3 +149,32 @@ sudo ln -s /etc/nginx/sites-available/dark_web /etc/nginx/sites-enabled/
 ```
 sudo systemctl restart nginx
 ```
+
+***If you want to run php (on nginx) then there is simple sample config, replace the php7.X with your php version ( you can get version by running php-v command)***
+```
+server {
+    listen 127.0.0.1:80;
+    server_name SOMELONGSTRING.onion;
+
+    root /var/www/dark_web/;
+    index index.php index.html index.htm;
+    server_name_in_redirect off;
+    server_tokens off;
+    port_in_redirect off;
+
+    location / {
+        allow 127.0.0.1;
+        deny all;
+        try_files $uri $uri/ /index.php?$args;
+    }
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php/php7.X-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+```
