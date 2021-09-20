@@ -20,7 +20,7 @@ nano /etc/apache2/conf-available/security.conf
 |--> TraceEnable Off
 ```
 
-***The Hidden Service (nginx)***
+***The Hidden Service (nginx server)***
 
 ***We need to edit the Tor configuration file to enable our hidden service. First we will make a backup of this configuration file.***
 ```
